@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>jQuery - Урок 10. Плагин draggable </title>
+<meta http-equiv="KEYWORDS" content="jQuery плагин draggable">
+<meta http-equiv="DESCRIPTION" content="В этом уроке по jQuery рассматривается плагин draggable - плагин для перемещения элементов.">
+
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+       
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="0f89d7d9c63fbbf3475ef03b1f24f084" content="">
+        <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui-1.7.2.custom.min.js"></script>
+
+        <script type="text/javascript" src="./js/script.js"></script>
+ 
+
+
+</head>
+
+    <body>
+       <div id="main">       
+        <div id="container">        
+          
+        
+		
+<div id="content">
+
+
+<br />
+
+<div id="content_text_2" >
+
+
+
+ <script type="text/javascript" src="./js/script2.js"></script>
+
+
+
+
+<h1>jQuery - Урок 10. Плагин draggable  - перетаскиваем элементы</h1>
+Сегодня мы начнем знакомиться с набором официальных плагинов jQuery - jQuery UI. Для работы с набором этих плагинов
+нам понадобится файл ui.core.js. На официальном сайте по адресу <a href="http://jqueryui.com/download">http://jqueryui.com</a>
+можно скачать полный файл (если отметить все галочки, т.е. выбрать все плагины), не забудьте выбрать  версию
+используемой вами библиотеки. А можно выбрать лишь необходимый плагин (оставив галочку только напротив него, тогда файл будет
+весить меньше).<br><br>
+Для дальнейшей работы давайте сходим по вышеуказанному адресу, выберем версию jquery - 1.3.2, отметим все галочки и нажмем на
+кнопку Download. В реальной жизни лучше оставить галочку только напротив интересующего вас плагина, но мы будем рассматривать все,
+поэтому нам и удобнее скачать полный файл. <br><br>
+Разархивируйте то, что скачали в папку, в которой у вас находятся страницы index.html, style.css и script.js.
+Из вновь появившихся папок нас интересует та, в которой лежат файлы jquery-1.3.2.min.js и jquery-ui-1.7.2.custom.min.js.
+(Если вы выбрали другую версию jquery, то и версия jquery ui у вас будет отличаться). В моем случае это папка js. <br><br>
+Подключим эти файлы к нашей html-странице:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery плагин draggable</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body></body>
+</html>
+    </xmp>
+</div>
+Остальные файлы и папки мы будем подключать в дальнейшем по мере необходимости.
+<h2>Плагин Draggable</h2>
+Этот плагин позволяет перетаскивать элементы страницы с помощью мыши. Например, вот так:
+<div class="resalt">
+<center>
+    <div id="les10_ex1">Перетащи меня</div>
+</center>
+</div><br><br>
+Код html-страницы:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery плагин draggable</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div id="les10_ex1">Перетащи меня</div>
+  </body>
+</html>
+    </xmp>
+</div>
+Стиль div-у придайте сами, а вот на странице script.js необходимо указать, что этот div будет перемещаемым:
+<div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex1").draggable();
+}
+    </xmp>
+</div>
+Вот так все просто. Перемещение элемента можно настраивать, для это существует ряд параметров. Например:
+<ul>
+    <li><i class="teg">axis</i> - ограничивает перетаскивание элемента либо по горизонтали (x) либо по вертикали (y)
+    оси координат.<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex2").draggable({
+   axis:'x'
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex2">Перетащи меня</div>
+</center>
+</div>
+Теперь div можно перетаскивать только по горизонтали.
+</li><br><br>
+
+<li><i class="teg">containment</i> - ограничивает область перетаскивания. Возможные значения: parent (родительский элемент),
+document (текущий документ), window (окно), [x1, y1, x2, y2] - координаты левого верхнего и правого нижнего угла допустимой области.
+<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex3").draggable({
+   containment:'parent'
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex3">Перетащи меня</div>
+</center>
+</div>
+Теперь div можно перетаскивать только в пределах родительского элемента (в пределах рамки).
+</li><br><br>
+
+<li><i class="teg">cursor</i> - определяет вид курсора при перетаскивании.
+<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex4").draggable({
+   cursor: 'crosshair'
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex4">Перетащи меня</div>
+</center>
+</div>
+Теперь при перетаскивании курсор принимает вид перекрестья в виде прицела. Другие возможные значения:<br>
+- e-resize - двунаправленная горизонтальная стрелка,<br>
+- n-resize - двунаправленная вертикальная стрелка,<br>
+- ne-resize - двунаправленная диагональная стрелка (из левого нижнего угла в верхний правый угол),<br>
+- nw-resize - двунаправленная диагональная стрелка (из правого нижнего угла в верхний левый угол),<br>
+- move - перекрестье из четырёх стрелок,<br>
+- text - обычный текстовый курсор,<br>
+- wait - песочные часы Windows.
+</li><br><br>
+
+
+<li><i class="teg">delay</i> - определяет время в миллисекундах, по истечении которого, начнется перетаскивание (полезно для
+предотвращения случайного перетаскивания).
+<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex5").draggable({
+   delay: 2000
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex5">Перетащи меня</div>
+</center>
+</div>
+Теперь  перетаскивание будет начинаться через 2 секунды после нажатия и удержания левой кнопки мыши.
+</li><br><br>
+
+<li><i class="teg">distance</i> - определяет расстояние в пикселах, которое указатель мыши должен пройти после того, как вы
+нажали на кнопку мыши, прежде чем начнется перетаскивание (так же, как и предыдущий параметр полезен  для предотвращения
+случайного перетаскивания).
+<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex6").draggable({
+   distance: 50
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex6">Перетащи меня</div>
+</center>
+</div>
+Теперь  перетаскивание будет начинаться только после того, как указатель мыши пройдет 50 пикселов, причем неважно в какую сторону.
+</li><br><br>
+
+<li><i class="teg">handle</i> - определяет, за какой элемент внутри данного осуществляется перетаскивание.
+<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex7").draggable({
+   handle: 'p'
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex7"><p>Перетащи меня</p></div>
+</center>
+</div>
+Теперь  перетаскивать div можно только, ухватив за абзац (за текст).
+</li><br><br>
+
+<li><i class="teg">revert</i> - определяет, будет ли элемент возвращен на свое место после перетаскивания (true - да).
+<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex8").draggable({
+   revert: true
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex8"><p>Перетащи меня</p></div>
+</center>
+</div>
+Теперь  после перетаскивания div будет возвращаться на свое место.
+</li><br><br>
+
+<li><i class="teg">revertDuration</i> - определяет, за какое время  элемент будет возвращен на свое место после перетаскивания (если
+предыдущий параметр определен, как true).
+<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex9").draggable({
+   revert: true,
+   revertDuration: 3000
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex9"><p>Перетащи меня</p></div>
+</center>
+</div>
+Теперь  после перетаскивания div будет возвращаться на свое место за 3 секунды.
+</li><br><br>
+
+<li><i class="teg">zIndex </i> - определяет значение свойства z-index (номер слоя) перемещаемого элемента.
+<br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex10").draggable({
+   zIndex: 1
+  });
+  $("#les10_ex11").draggable({
+   zIndex: 2
+  });
+  $("#les10_ex12").draggable({
+   zIndex: 3
+  });
+}
+    </xmp>
+</div>
+<div class="resalt">
+<center>
+    <div id="les10_ex10">z-index: 1</div>
+    <div id="les10_ex11">z-index: 2</div>
+    <div id="les10_ex12">z-index: 3</div>
+</center>
+</div>
+Теперь  в какой бы последовательности мы не перетаскивали наши div-ы, они всегда будут располагаться соответственно своим слоям
+(самый верхний 3, под ним 2, в самом низу 1).
+</li><br><br>
+</ul>
+А сейчас мы рассмотрим три параметра, связанных с событиями:
+<ul>
+    <li><i class="teg">start</i> - событие наступает с началом перемещения.</li><br><br>
+    <li><i class="teg">drag</i> - событие происходит в течение всего времени перемещения.</li><br><br>
+    <li><i class="teg">stop</i> - событие наступает при завершении перемещения.</li><br><br>
+</ul>
+При использовании любого из этих параметров мы должны определить функцию, которая принимает два аргумента – event (объект события)
+и ui (специальный объект, содержащий информацию о положении перемещаемого объекта).<br><br>
+Используя свойства этих аргументов, можно узнать координаты объекта в любой момент при перемещении и после него. Например:
+<div class="resalt">
+    <div id="les10_ex13"></div>
+    <textarea cols="70" rows="3" wrap="off" id="res"></textarea><br>
+</div>
+Html-код примера:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery плагин draggable</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div id="les10_ex13"></div>
+    <textarea cols="70" rows="3" wrap="off" id="res"></textarea>
+  </body>
+</html>
+    </xmp>
+</div>
+Функция:
+<div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  start: function(event, ui) {
+            var a=event.type;
+            $('#res').text('Событие: '+a);
+        },
+  stop: function(event, ui) {
+            var a=event.type;
+            var c=ui.position.left;
+            var d=ui.position.top;
+            var e=ui.offset.left;
+            var f=ui.offset.top;
+            $('#res').text('Событие: '+a+
+              '\nРасстояние слева и сверху относительно родительского элемента: '+c+' '+d+
+              '\nАбсолютные значения расстояния слева и сверху: '+e+' '+f);
+        }
+}
+    </xmp>
+</div>
+Всего у плагина draggable более 20 различных параметров, полный перечень можете посмотреть, например,
+<a rel="nofollow" href="http://slyweb.ru/jquerydoc/draggable-options.php">здесь</a>.<br><br>
+У  плагина draggable есть четыре метода, которые позволяют менять работу плагина после его инициализации:
+<ul>
+    <li><i class="teg">destroy</i> - удаляет всю функциональность плагина Draggable.
+        <br><br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("#les").draggable(‘destroy’);
+            </xmp>
+        </div>
+    </li><br><br>
+    <li><i class="teg">disable</i> - временно запрещает работу всей функциональности плагина Draggable.
+    <br><br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("#les").draggable(‘disable’);
+            </xmp>
+        </div>
+    </li><br><br>
+    <li><i class="teg">enable</i> - разрешает работу всей функциональности плагина Draggable (если она была запрещена).
+    <br><br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("#les").draggable(‘enable’);
+            </xmp>
+        </div>
+    </li><br><br>
+    <li><i class="teg">option</i> - позволяет установить значения параметров плагина после его инициализации.
+    <br><br>
+        Запись:
+        <div class="kod">
+            <xmp>
+                $("#les").draggable(‘option’, optionName, [value]);
+            </xmp>
+        </div>
+    </li><br><br>
+</ul>
+Посмотрим на примере:
+<div class="resalt">
+    <div id="les10_ex14"></div><br><br>
+    <input type="button" value="Метод option" id="metOpt">
+    <input type="button" value="Метод disable" id="metDis">
+    <input type="button" value="Метод enable" id="metEn">
+</div>
+Html-код примера:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery плагин draggable</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div id="les10_ex14"></div>
+    <input type="button" value="Метод option" id="metOpt">
+    <input type="button" value="Метод disable" id="metDis">
+    <input type="button" value="Метод enable" id="metEn">
+  </body>
+</html>
+    </xmp>
+</div>
+Функция:
+<div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les10_ex14").draggable({
+     revert: true,
+     cursor: 'crosshair'
+  });
+  $("#metOpt").click(function(){
+    $("#les10_ex14").draggable("option", "revertDuration", [5000]);
+  });
+  $("#metDis").click(function(){
+    $("#les10_ex14").draggable("disable");
+  });
+  $("#metEn").click(function(){
+    $("#les10_ex14").draggable("enable");
+  });
+}
+    </xmp>
+</div>
+На этом все, мы достаточно уделили время плагину  Draggable. В следующий раз мы познакомимся с плагином Droppable, который
+позволяет перемещаемые элементы сбрасывать в какой-либо другой элемент (самый распространенный пример - корзина).
+<br><br>
+
+
+</div>
+
+</div>
+
+          
+            </div>
+
+            </div>
+
+
+
+
+ </body>
+
+

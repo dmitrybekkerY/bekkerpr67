@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>jQuery - Урок 5. Методы для работы с html</title>
+<meta http-equiv="KEYWORDS" content="jQuery html методы">
+<meta http-equiv="DESCRIPTION" content="В этом уроке по jQuery рассматриваются методы работы с html.">
+
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/media.css"  media="screen"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="0f89d7d9c63fbbf3475ef03b1f24f084" content="">
+        <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui-1.7.2.custom.min.js"></script>
+
+        <script type="text/javascript" src="./js/script.js"></script>
+        
+
+
+</head>
+
+    <body>
+       <div id="main">       
+        <div id="container">        
+          
+            <div id="left">
+
+
+<div id="head"></div>	
+	<div id="fixblock">
+
+
+
+
+<br>
+<br>
+
+	</div>
+
+	
+
+<br>
+
+
+
+</div>
+<div id="content">
+
+
+<br />
+
+<div id="content_text_2" >
+
+
+
+
+
+<h1>jQuery - Урок 5. Методы для работы с html</h1>
+Сначала рассмотрим основные методы работы с html, а затем уже методы для манипуляции с этими элементами. Итак, основные методы:
+<ul>
+    <li><i class="teg">html(val)</i> - добавляет html-код в выбранные элементы.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("div.sp").html("<span>Привет</span>");
+            </xmp>
+        </div>
+    Данная инструкция добавит во все div-ы с классом sp, span-ы с текстом "Привет".</li><br><br>
+
+   <li><i class="teg">text() / val()</i> - возвращает текстовое содержимое элемента / значение элемента.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").text();
+            </xmp>
+        </div>
+    Данная инструкция вернет текст из параграфа.</li><br><br>
+
+    <li><i class="teg">text(val) / val(val)</i> - установит текст для элемента / значение для элемента.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").text("Привет!");
+            </xmp>
+        </div>
+    Данная инструкция в параграфе напишет слово "Привет!".</li><br>
+</ul>
+Давайте для примера, сделаем так, чтобы при нажатии по кнопке "Повторить", текст из первого абзаца дублировался во второй абзац.
+<div class="resalt">    
+    <p id="p1">Текст первого абзаца!</p>
+    <p id="p2"></p>
+    <input type="button" value="Повторить!" onclick="addHtml();">
+</div>
+Html-код:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery html</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>      
+      <p id="p1">Текст первого абзаца!</p>
+      <p id="p2"></p>
+      <input type="button" value="Повторить!" onclick="addHtml();">
+  </body>
+</html>
+    </xmp>
+</div>
+Фукция будет выглядеть так:
+<div class="kod">
+    <xmp>
+function addHtml(){
+    var tp1=$("#p1").text();
+    $("#p2").text(tp1);
+}
+    </xmp>
+</div>
+Т.е. сначала в переменную tp1 мы запишем текстовое содержимое первого абзаца (первая строка), а затем передадим его во второй
+абзац (вторая строка).<br><br>
+Теперь давайте рассмотрим методы, которые позволяют манипулировать вставляемыми элементами.
+<ul>
+    <li><i class="teg">append(content)</i> - добавляет content внутрь всех выбранных элементов ПОСЛЕ существующего контента.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").append("<b>Привет</b>");
+            </xmp>
+        </div>
+    Данная инструкция добавит в конец параграфа текст "Привет" жирным шрифтом.</li><br><br>
+
+    <li><i class="teg">appendTo(content)</i> - обратная операция, добавляет В content все выбранные элементы.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").appendTo("#main");
+            </xmp>
+        </div>
+    Данная инструкция добавит параграф в конец элемента с идентификатором "main".<br><br>
+    Иными словами:<br> <i class="teg">$(A).append(B)</i> - добавит В в конец А.<br>
+   <i class="teg"> $(A).appendTo(B)</i> - добавит А в конец В. </li><br><br>
+
+    <li><i class="teg">prepend(content)</i> - добавляет content внутрь всех выбранных элементов ДО существующего контента.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").prepend("<b>Привет</b>");
+            </xmp>
+        </div>
+    Данная инструкция вставит в начало параграфа текст "Привет" жирным шрифтом.</li><br><br>
+
+    <li><i class="teg">prependTo(content)</i> - обратная операция, добавляет В content все выбранные элементы.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").prependTo("#main");
+            </xmp>
+        </div>
+    Данная инструкция вставит параграф в начало элемента с идентификатором "main".<br><br>
+    Иными словами:<br> <i class="teg">$(A).prepend(B)</i> - добавит В в начало А.<br>
+   <i class="teg"> $(A).prependTo(B)</i> - добавит А в начало В. </li><br><br>
+
+   <li><i class="teg">after(content)</i> - добавляет content ПОСЛЕ всех выбранных элементов (заметьте ПОСЛЕ элемента, а не в
+   конец элемента, как в случае с append.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").after("<b>Привет</b>");
+            </xmp>
+        </div>
+    Данная инструкция вставит после параграфа текст "Привет" жирным шрифтом.</li><br><br>
+
+    <li><i class="teg">befor(content)</i> - добавляет content ДО всех выбранных элементов (заметьте ДО элемента, а не в
+   начало элемента, как в случае с prepend.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").befor("<b>Привет</b>");
+            </xmp>
+        </div>
+    Данная инструкция вставит перед параграфом текст "Привет" жирным шрифтом.</li><br><br>
+
+     <li><i class="teg">insertAfter(content)</i> - вставляет все выбранные элементы ПОСЛЕ content-а .<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").insertAfter("#main");
+            </xmp>
+        </div>
+    Данная инструкция вставит параграф после элемента с идентификатором "main".<br><br>
+    Иными словами:<br> <i class="teg">$(A).after(B)</i> - вставит В после А.<br>
+   <i class="teg"> $(A).insertAfter(B)</i> - вставит А после В. </li><br><br>
+
+   <li><i class="teg">insertBefore(content)</i> - вставляет все выбранные элементы ПЕРЕД content-ом .<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").insertBefore("#main");
+            </xmp>
+        </div>
+    Данная инструкция вставит параграф перед элементом с идентификатором "main".<br><br>
+    Иными словами:<br> <i class="teg">$(A).before(B)</i> - вставит В перед А.<br>
+   <i class="teg"> $(A).insertBefore(B)</i> - вставит А перед В. </li><br><br>
+</ul>
+Рассмотрим пример. Давайте сделаем так, чтобы при нажатии на кнопку "Добавить" в красном прямоугольнике появлялись
+желтые квадратики (один клик - один квадратик).
+<div class="resalt">    
+    <div id="red_sk">   </div><br><br>
+    <input type="button" value="Добавить!" onclick="addYellowSquare();">
+</div>
+Код html-страницы состоит из одного div-а и одной кнопки:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery html</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div id="red_sk"></div>
+    <input type="button" value="Добавить!" onclick="addYellowSquare();">
+  </body>
+</html>
+    </xmp>
+</div>
+На странице style.css как всегда определяем стили:
+<div class="kod">
+    <xmp>
+#red_sk{
+    width:700px;
+    height:100px;
+    background:red;
+}
+.yellow_square{
+    float:left;
+    width:80px;
+    height:80px;
+    background:yellow;
+    margin:5px;
+}
+    </xmp>
+</div>
+Ну а код самой функции совсем короткий:
+<div class="kod">
+    <xmp>
+function addYellowSquare(){
+    $("#red_sk").prepend("<div class='yellow_square'></div>");
+}
+    </xmp>
+</div>
+Вот так все просто. Но продолжим рассматривать сами методы:
+<ul>
+    <li><i class="teg">wrap(html)</i> - оборачивает каждый элемент в элемент обертку.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").wrap("<span></span>");
+            </xmp>
+        </div>
+    Данная инструкция обернет каждый параграф span-ом.</li><br><br>
+
+<li><i class="teg">wrapAll(html)</i> - оборачивает все элементы в ОДИН элемент обертку.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").wrapAll("<span></span>");
+            </xmp>
+        </div>
+    Данная инструкция обернет все параграфы одним span-ом.</li><br><br>
+
+    <li><i class="teg">wrapInner(html)</i> - оборачивает внутренне содержание каждого элемента.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("p").wrapInner("<em></em>");
+            </xmp>
+        </div>
+    Данная инструкция выделит содержимое каждого параграфа курсивом.</li><br><br>
+
+    <li><i class="teg">replaceWith(content)</i> - замещает одни элементы другими.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("span").replaceWith("<div></div>");
+            </xmp>
+        </div>
+    Данная инструкция заменит все span-ы div-ами.</li><br><br>
+
+    <li><i class="teg">replaceAll(selector)</i> - обратная операция, т.е. все selector-ы будут поменяны на элементы.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("span").replaceAll("<div></div>");
+            </xmp>
+        </div>
+    Данная инструкция заменит все  div-ы span-ами.</li><br><br>
+
+     <li><i class="teg">empty()</i> - удаляет из элемента все узлы-потомки, включая текст.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("span").empty();
+            </xmp>
+        </div>
+    Данная инструкция удалит все содержимое span-ов.</li><br><br>
+
+    <li><i class="teg">remove()</i> - удаляет сами элементы.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("span").remove();
+            </xmp>
+        </div>
+    Данная инструкция удалит все  span-ы.</li><br><br>
+
+    <li><i class="teg">clone()</i> - клонирует элементы.<br>
+        Пример:
+        <div class="kod">
+            <xmp>
+                $("b").clone().append("div");
+            </xmp>
+        </div>
+    Данная инструкция возьмет элементы, выделенные жирным и добавит их в div.</li><br><br>
+</ul>
+
+В последнем примере, мы коснулись еще одного аспекта jQuery, а именно поддержки этой библиотекой цепочки вызовов.
+Т.е. вы можете вызывать несколько методов в одной строке, отделяя их точкой. Насколько это удобно? Зависит от Вас. Если это Вас
+не путает, то используйте на здоровье. В дальнейшем мы часто будем использовать такой вид записи.<br><br>
+Напоследок, давайте сделаем еще один пример. Пусть у нас есть некоторый список, и мы хотим разрешить пользователям добавлять в
+него пункты:
+<div class="resalt">
+Наши города:
+    <ul id="jq">
+    <li>Архангельск</li>
+    <li>Москва</li>
+    <li>Иркутск</li>
+    </ul>
+    Дополните список:
+    <input type="text" id="user_text" size="20" maxlength="50">
+    <input type="button" value="Добавить" onclick="addSpisok();">
+</div>
+Код html-страницы:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery html</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    Наши города:
+    <ul id="jq">
+    <li>Архангельск</li>
+    <li>Москва</li>
+    <li>Иркутск</li>
+    </ul>
+    Дополните список:
+    <input type="text" id="user_text" size="20" maxlength="50">
+    <input type="button" value="Добавить" onclick="addSpisok();">
+  </body>
+</html>
+    </xmp>
+</div>
+А код функции:
+<div class="kod">
+    <xmp>
+function addSpisok(){
+    var jq=$('#user_text').val();
+    $('#jq').append('<li>'+jq+'</li>');
+}
+    </xmp>
+</div>
+Вот так просто можно делать многие вещи с помощью jQuery. Вы уже достаточно знаете, попробуйте сделать что-нибудь самостоятельно,
+используя изученные методы. Например, попробуйте нарисовать шахматную доску (8 х 8 клеток, для тех, кто не помнит).
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+           
+            </div>
+
+            </div>
+
+
+
+
+ </body>
+

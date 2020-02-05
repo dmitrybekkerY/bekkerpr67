@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>jQuery - Урок 9. Плагины - рисуем углы</title>
+<meta http-equiv="KEYWORDS" content="jQuery corner рисуем углы">
+<meta http-equiv="DESCRIPTION" content="В этом уроке по jQuery рассматриваются плагин corner, позволяющий рисовать углы у элементов.">
+
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="0f89d7d9c63fbbf3475ef03b1f24f084" content="">
+        <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui-1.7.2.custom.min.js"></script>
+		<script type="text/javascript" src="./js/jquery.corner.js"></script>
+
+        <script type="text/javascript" src="./js/script.js"></script>
+       
+
+
+
+</head>
+
+    <body>
+       <div id="main">       
+        <div id="container">        
+           
+           
+<div id="content">
+
+
+
+<br />
+
+<div id="content_text_2" >
+
+
+
+
+<h1>jQuery - Урок 9. Плагины - рисуем углы</h1>
+Одной из замечательных особенностей jQuery является расширяемость этой библиотеки. Любой желающий веб-разработчик
+может дополнить эту библиотеку своим плагином - модулем, который умеет делать что-то интересное и полезное.
+На сегодняшний день существует огромное количество как официальных, так и неофициальных плагинов для jQuery.
+Одни из них становятся популярными и часто используются, другие интересны разве что
+самим разработчикам. Посмотреть их в работе и подобрать что-нибудь для своих нужд можно по адресу:
+<a rel="nofollow" href="http://plugins.jquery.com/">http://plugins.jquery.com/</a>. <br><br>
+Давайте посмотрим, как работать с плагинами на примере.
+Пусть мы хотим, чтобы при загрузке страницы углы у div-а ниже закруглялись (как сейчас):
+<div class="resalt">
+<center>
+    <div id="les9_ex1"></div>    
+</center>
+</div><br><br>
+Для этого, кроме самой библиотеки, нам понадобится плагин jquery.corner.js(лежит в корне лабораторных работ),
+который мы расположим рядом с файлом самой библиотеки (jquery-1.2.6.js), и подключим его на html-странице:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery плагины</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="jquery.corner.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+   <div id="les9_ex1"></div>    
+  </body>
+</html>
+    </xmp>
+</div>
+Закруглять углы будем именно у div-а с id="les9_ex1". Определим для него размер и цвет на странице style.css:
+<div class="kod">
+    <xmp>
+#les9_ex1{
+    width:400px;
+    height:200px;
+    background:#666699;
+}
+    </xmp>
+</div>
+
+А на странице script.js укажем, что при загрузке страницы углы у div-а надо закруглить:
+<div class="kod">
+    <xmp>
+$(document).ready(init);
+
+function init(){
+  $("#les9_ex1").corner("round");
+}
+    </xmp>
+</div>
+Вот так: просто и изящно. Всю работу сделал <a href="http://www.site-do.ru/js/jquery9.php">плагин</a>, мы же только указали что именно сделать с углами - закруглить (round).
+Здесь возможны и другие варианты:
+<ul>
+    <li><i class="teg">corner("bevel")</i><br><br>
+    <div id="les9_ex2"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("notch")</i><br><br>
+    <div id="les9_ex3"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("dog")</i><br><br>
+    <div id="les9_ex4"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("dog2")</i><br><br>
+    <div id="les9_ex5"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("bite")</i><br><br>
+    <div id="les9_ex6"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("cool")</i><br><br>
+    <div id="les9_ex7"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("sharp")</i><br><br>
+    <div id="les9_ex8"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("slide")</i><br><br>
+    <div id="les9_ex9"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("jut")</i><br><br>
+    <div id="les9_ex10"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("curl")</i><br><br>
+    <div id="les9_ex11"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("tear")</i><br><br>
+    <div id="les9_ex12"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("fray")</i><br><br>
+    <div id="les9_ex13"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("wicked")</i><br><br>
+    <div id="les9_ex14"></div>
+    </li><br><br>
+
+    <li><i class="teg">corner("sculpt")</i><br><br>
+    <div id="les9_ex15"></div>
+    </li><br><br>   
+</ul>
+Вот сколько вариантов для вашего творчества. Кроме этого, вы можете придавать форму не всем углам, а выборочно, используя
+ключевые слова: bl (нижний левый угол),  tl (верхний левый угол), br (нижний правый угол), tr(верхний правый угол).<br><br>
+Например:<br><br>
+<i class="teg">$("#les9_ex16").corner("dog tl br");</i><br><br>
+<div id="les9_ex16"></div><br><br>
+Также можно задавать радиус кривизны углов в пикселах, например:<br><br>
+<i class="teg">$("#les9_ex17").corner("30px");</i><br><br>
+<div id="les9_ex17"></div><br><br>
+Вот такой длинный пример получился, но надеюсь, что на его примере, стало понятно, как много интересного открывается для нас
+с различными плагинами.
+
+
+<br><br>
+
+<br><br>
+
+</div>
+
+</div>
+
+            </div>
+
+            </div>
+
+
+
+
+ </body>
+
+

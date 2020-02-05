@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JQuery селекторы</title>
+<meta http-equiv="KEYWORDS" content="jQuery селекторы">
+<meta http-equiv="DESCRIPTION" content="Этот урок по jQuery  посвящен селекторам.">
+
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/media.css"  media="screen"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="0f89d7d9c63fbbf3475ef03b1f24f084" content="">
+        <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui-1.7.2.custom.min.js"></script>
+
+        <script type="text/javascript" src="./js/script.js"></script>
+       
+        <script type="text/javascript" src="./js/scroll.js"></script>
+
+
+
+
+</head>
+
+    <body>
+       <div id="main">       
+        <div id="container">        
+            
+       
+<div id="content">
+
+
+
+<div id="content_text_2" >
+
+
+<h1>JQuery селекторы</h1>
+В прошлом уроке мы определились, что селекторы - это элементы, с которыми мы хотим что-либо сделать. Давайте посмотрим, как их
+можно задавать:
+<ul>
+    <li><i class="teg">#id</i> - выбирает единственный элемент с переданным идентификатором (id).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("#lok").css("border", "1px solid red");
+    </xmp>
+</div>
+Данный оператор выберет элемент с id="lok" и добавит ему css-стиль, в данном случае рамку, шириной в 1 пиксел, сплошную и красную.
+(О способах задания css-стилей будет говориться в отдельном уроке).
+    </li><br><br>
+    <li><i class="teg">.class</i> - выбирает все элементы с переданным классом.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(".lok").css("border", "1px solid red");
+    </xmp>
+</div>
+Данный оператор выберет все элементы с class="lok" и добавит им <a href="http://www.site-do.ru/css/">css-стиль</a>, в данном случае рамку, шириной в 1 пиксел, сплошную и красную.</li><br><br>
+    <li><i class="teg">elements</i> - выбирает все элементы с выбранным именем.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div").css("border", "1px solid red");
+    </xmp>
+</div>
+Данный оператор выберет все div-ы и обведет их в рамки.</li><br><br>
+    <li><i class="teg">*</i> - выбирает все элементы, включая head и body.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("*").css("border", "1px solid red");
+    </xmp>
+</div>
+Данный оператор добавит рамку ко всем элементам.
+<div class="kod">
+    <xmp>
+$("*", document.body).css("border", "1px solid red");
+    </xmp>
+</div>
+Данный оператор добавит рамку ко всем элементам в тегах body.
+</li><br><br>
+    <li><i class="teg">selector1, ..., selectorN</i> - выбирает все элементы, переданные в селекторах.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div, span, p.lok").css("border", "1px solid red");
+    </xmp>
+</div>
+Данный оператор добавит рамку ко всем div-ам, span-ам, и абзацам, имеющим класс lok. Таким образом, через зяпятую можно указать 
+любые селекторы.</li><br>
+</ul>
+Давайте попрактикуемся и сделаем вот что (пощелкайте по кнопкам):
+<div class="resalt">
+    <h2>Селекторы jQuery</h2>
+    <div id="st1" ><p>Текст первого абзаца</p></div>
+    <div id="st2" ><p class="withBorder">Текст второго абзаца</p></div>
+    <div id="st3" ><p>Текст третьего абзаца</p></div>
+    <div style="clear: both"></div><br>
+    <button  onclick="addStyle1()">Сделать первый div красным</button><br><br>
+    <button  onclick="addStyle2()">Обвести средний абзац синей рамкой</button><br><br>
+    <button  onclick="addStyle3()">Сделать шрифт в первом и третьем div-ах жирным</button>
+    <div style="clear: both"></div>
+</div>
+Код html-страницы прост:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script type="text/javascript" src="./js/jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+  </head>
+  <body>
+    <h2>Селекторы jQuery</h2>
+    <div id="st1" ><p>Текст первого абзаца</p></div>
+    <div id="st2" ><p class="withBorder">Текст второго абзаца</p></div>
+    <div id="st3" ><p>Текст третьего абзаца</p></div>
+    <div style="clear: both"></div>
+    <button  onclick="addStyle1()">Сделать первый div красным</button><br><br>
+    <button  onclick="addStyle2()">Обвести средний абзац синей рамкой</button><br><br>
+    <button  onclick="addStyle3()">Сделать шрифт в первом и третьем div-ах жирным</button>
+  </body>
+</html>
+    </xmp>
+</div>
+Внешний вид зададим с помощью таблицы стилей (style.css):
+<div class="kod">
+    <xmp>
+#st1, #st2, #st3{
+    float:left;
+    background:yellow;
+    margin:5px;
+    padding:5px;
+}
+    </xmp>
+</div>
+Ну и на странице script.js напишем сами функции:
+<div class="kod">
+    <xmp>
+function addStyle1(){
+  $("#st1").css("background", "red");
+}
+function addStyle2(){
+  $("p.withBorder").css("border", "1px solid blue");
+}
+function addStyle3(){
+  $("#st1, #st3").css("fontWeight", "bold");
+}
+    </xmp>
+</div>
+Как задавать css-стили мы сейчас разбирать не будем (для этого будет отдельный урок), а вот как задавать селекторы Вы, я надеюсь,
+уяснили. Тогда двигаемся дальше.<br><br>
+
+<em>Иерархические селекторы</em><br><br>
+Ранее мы рассматривали иерархию объектов, по аналогии
+у элементов могут быть предки (parent) и потомки (child). Например, все элементы, находящиеся на форме являются потомками формы,
+а форма, в свою очередь, является их предком. А в предыдущем примере абзац с классом withBorder является потомком div-а с id="st2"
+(он находится внутри него). <br><br>
+Посмотрим, как это можно использовать в селекторах jQuery:
+<ul>
+    <li><i class="teg">parent child</i> - выбирает все элементы, являющиеся потомками для определенного элемента предка.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("form input").css("border", "1px solid red");
+    </xmp>
+</div>
+Данная инструкция добавит рамку всем input-ам, которые являются потомками элемента form.</li><br><br>
+
+    <li><i class="teg">parent > child</i> - выбирает всех прямых наследников элемента-родителя.<br>
+    Пример - пусть у нас есть html-страница такой структуры:
+    <div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <h2>Селекторы jQuery</h2>
+    <div id="main">
+      <p></p>
+      <div></div>
+      <span></span>
+    </div>
+    <div id="content">
+      <p></p>
+      <div></div>
+      <span></span>
+    </div>
+  </body>
+</html>
+    </xmp>
+</div>
+Тогда следующая инструкция:
+<div class="kod">
+    <xmp>
+$("#content > *").css("border", "1px solid red");
+    </xmp>
+</div>
+добавит рамку всем элементам (div-у, span-у и абзацу), которые находятся в div-е с id="content", но не затронет
+одноименные элементы в div-е с id="main".</li><br><br>
+
+    <li><i class="teg">prev + next</i> - выбирает все элементы, которые являются следующими (next) за элементом
+    prev (предыдущий).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("label + input").css("border", "1px solid red");
+    </xmp>
+</div>
+Данная инструкция добавит рамку только тем input-ам, которые следуют непосредственно за надписями (label).</li>  
+</ul>
+<br><br>
+
+<em>Селекторы форм</em><br><br>
+Сначала просто их перечислим:
+<ul>
+    <li><i class="teg">:input</i> - выбираются все элементы input.</li><br>
+    <li><i class="teg">:text</i> - выбираются все элементы input типа text.</li><br>
+    <li><i class="teg">:password</i> - выбираются все элементы input типа password.</li><br>
+    <li><i class="teg">:radio</i> - выбираются все элементы input типа radio.</li><br>
+    <li><i class="teg">:checkbox</i> - выбираются все элементы input типа checkbox.</li><br>
+    <li><i class="teg">:submit</i> - выбираются все элементы input типа submit.</li><br>
+    <li><i class="teg">:reset</i> - выбираются все элементы input типа reset.</li><br>
+    <li><i class="teg">:button</i> - выбираются все элементы input типа button.</li><br>
+    <li><i class="teg">:image</i> - выбираются все элементы input типа image.</li><br>
+    <li><i class="teg">:file</i> - выбираются все элементы input типа file.</li><br>
+    <li><i class="teg">:hidden</i> - выбираются все элементы input типа hidden или просто скрытые.</li><br>
+</ul>
+Давайте сделаем, например, вот такую форму (пощелкайте по кнопкам):
+<div class="resalt">
+    <h2>Селекторы форм в jQuery</h2>
+      <form name="forma19">
+          <label>E-mail:</label><br>
+          <input type="text"  name="mail"><br>
+          <label>Password:</label><br>
+          <input type="password" name="pas"><br>
+          <input type="button" value="Поменять цвет полей для ввода" onclick="addColor1();">
+          <input type="button" value="Поменять цвет кнопок" onclick="addColor2();">
+      </form>
+</div>
+Код html-страницы:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <h2>Селекторы форм в jQuery</h2>
+      <form>
+          <label>E-mail:</label><br>
+          <input type="text"  name="mail"><br>
+          <label>Password:</label><br>
+          <input type="password" name="pas"><br>
+          <input type="button" id="b1" value="Поменять цвет полей для ввода" onclick="addColor1();">
+          <input type="button" id="b2" value="Поменять цвет кнопок" onclick="addColor2();">
+      </form>
+  </body>
+</html>
+    </xmp>
+</div>
+Сами функции:
+<div class="kod">
+    <xmp>
+function addColor1(){
+  $(":text, :password").css("background", "red");
+}
+function addColor2(){
+  $(":button").css("background", "blue");
+}
+    </xmp>
+</div>
+Вот так все просто! Кстати, если бы мы захотели поменять цвет только у одной кнопки, например, у первой, то
+мы обращались бы к ней по ее id:
+<div class="kod">
+    <xmp>
+function addColor2(){
+  $("#b1").css("background", "blue");
+}
+    </xmp>
+</div>
+Т.е. селекторы форм помогают совершать массовые действия с элементами формы.<br><br>
+Урок, посвященный селекторам на этом подошел к концу. Теперь Вы знаете, как указать тот элемент, с которым хочется произвести
+какие-либо действия. В следующий раз мы познакомимся с фильтрами, которые помогают сделать
+работу с селекторами еще более тонкой.
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+            </div>
+
+            </div>
+
+
+
+
+ </body>
+

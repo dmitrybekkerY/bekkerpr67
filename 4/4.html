@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>jQuery - Урок 4. Методы для работы с CSS-стилями</title>
+<meta http-equiv="KEYWORDS" content="jQuery css">
+<meta http-equiv="DESCRIPTION" content="В этом уроке по jQuery рассматриваются методы для работы с css-стилями.">
+
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/media.css"  media="screen"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="0f89d7d9c63fbbf3475ef03b1f24f084" content="">
+        <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui-1.7.2.custom.min.js"></script>
+
+        <script type="text/javascript" src="./js/script.js"></script>
+
+
+</head>
+
+    <body>
+       <div id="main">       
+        <div id="container">        
+            
+            <div id="left">
+
+</div>
+<div id="content">
+
+
+<br />
+
+<div id="content_text_2" >
+
+
+
+
+
+
+
+<h1>jQuery - Урок 4. Методы для работы с CSS-стилями</h1>
+В jQuery имеется три категории методов: одни манипулируют с элементами, подходящими по шаблону; вторые возвращают значения элемента,
+а третьи изменяют сами элементы.<br><br>
+Сегодня рассмотрим методы, которые используются для CSS-стилей.<br><br>
+Итак, чтобы добавить какому-либо элементу стиль, необходимо воспользоваться следующим методом:<br><br>
+<i class="teg">.css(name,value)</i><br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div").css("border", "1px solid blue");
+    </xmp>
+</div>
+Данная инструкция обведет  div синей рамкой.<br><br>
+В качестве параметров здесь используются названия и значения, применимые в <a href="http://www.site-do.ru/css/">CSS</a>: <a href="http://www.site-do.ru/css/css5.php">background</a>, <a href="http://www.site-do.ru/css/css9.php">border</a>, font-style, color и т.д.<br><br>
+Если необходимо задать для элемента несколько CSS-правил, то лучше использовать следующую конструкцию:<br><br>
+<i class="teg">.css({properties})</i><br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div").css({
+         border:"1px solid blue",
+         fontWeight:"bolder",
+         backgroundColor:"red"
+         });
+    </xmp>
+</div>
+Данная инструкция обведет  div синей рамкой, сделает фон красным, а текст - жирным.<br><br>
+Обратите внимание, что для сложносоставных свойств CSS вроде font-weight и background-color используются иэ эквиваленты из JS:
+fontWeight, backgroundColor и т.д.<br><br>
+Перечислим другие методы для работы со стилями:
+<ul>
+    <li><i class="teg">.addClass(class)</i><br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("p:last").addClass("main");
+    </xmp>
+</div>
+Данная инструкция добавит класс main к последнему элементу параграфа.</li><br><br>
+
+<li><i class="teg">.removeClass(class)</i><br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("p:even").removeClass("main");
+    </xmp>
+</div>
+Данная инструкция удалит класс main из всех четных параграфов.</li><br><br>
+
+<li><i class="teg">.toggleClass(class)</i><br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("p").toggleClass("main");
+    </xmp>
+</div>
+Данная инструкция  удалит класс main из всех параграфов, если он присутствует. И добавит этот класс, если он отсутствует.</li><br><br>
+
+<li><i class="teg">.offset()</i><br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+var offDiv=$("div").offset();
+    </xmp>
+</div>
+Данная инструкция  позволяет получить отступы слева и сверху для элемента. Чтобы получить значения конкретного свойства, нужно
+использовать следующие свойства: offset.left для отступа слева и offset.top - для отступа сверху.</li><br><br>
+
+<li><i class="teg">.height(value)</i><br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div").height();
+$("div").height(200);
+    </xmp>
+</div>
+Данная инструкция  позволяет получить (первая строка) и задать (вторая строка) высоту элемента.</li><br><br>
+
+<li><i class="teg">.width(value)</i><br><br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div").width();
+$("div").width(200);
+    </xmp>
+</div>
+Данная инструкция  позволяет получить (первая строка) и задать (вторая строка) ширину элемента.<br><br>
+Еще пример:
+<div class="kod">
+    <xmp>
+var widDiv=$("div").width();
+$("div.fir").width(300);
+    </xmp>
+</div>
+Первая строка запишет в переменную widDiv значение ширины первого div-а. Вторая инструкция задаст div-ам класса fir ширину
+в 300 пикселов.<br><br>
+Это очень интересная особенность методов jQuery: они используются, как для задания параметров (когда принимаются 2 аргумента),
+так и для получения значений этих параметров (если передается один аргумент). </li><br><br>
+
+</ul>
+Давайте, используя полученные знания сделаем меню с вкладками, вот такого вида (пощелкайте по вкладкам):
+<div class="resalt">
+    <h2>jQuery - CSS</h2>
+    <div id="vkladki">
+     <div class="vkl" id="vkladka1" onClick="chang('#vkladka1');">Вкладка 1</div>
+     <div class="vkl" id="vkladka2" onClick="chang('#vkladka2');">Вкладка 2</div>
+     <div class="vkl" id="vkladka3" onClick="chang('#vkladka3');" >Вкладка 3</div>
+     <div class="vkl" id="vkladka4" onClick="chang('#vkladka4');">Вкладка 4</div>
+    </div>
+     <div style="clear: both"></div>
+    <div id="content4"></div>
+     <div style="clear: both"></div>
+</div>
+Итак, html-код страницы следующий:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+      <h2>jQuery - CSS</h2>
+      <div id="vkladki">
+          <div class="vkl" id="vkladka1" onClick="chang('#vkladka1');">Вкладка 1</div>
+          <div class="vkl" id="vkladka2" onClick="chang('#vkladka2');">Вкладка 2</div>
+          <div class="vkl" id="vkladka3" onClick="chang('#vkladka3');">Вкладка 3</div>
+          <div class="vkl" id="vkladka4" onClick="chang('#vkladka4');">Вкладка 4</div>
+      </div>
+      <div style="clear: both"></div>
+      <div id="content"></div>
+      <div style="clear: both"></div>
+  </body>
+</html>
+    </xmp>
+</div>
+Как видно, все вкладки имеют единый стиль, определяемый классом vkl, а выделенная вкладка имеет класс selected. Внешний вид
+пропишем на странице style.css
+<div class="kod">
+    <xmp>
+.vkl{
+    float:left;
+    width:140px;
+    height:28px;
+    background:#E5BA83;
+    color:white;
+    font-size:20px;
+    border-right:1px solid white;
+    padding-left:10px;
+}
+#content{
+    width:603px;
+    height:100px;
+    background:#CCA675;
+}
+.selected{
+   background:#CCA675;
+}
+    </xmp>
+</div>
+Осталось самое интересное, а именно функция chang():
+<div class="kod">
+    <xmp>
+function chang(s){
+    $('.selected').removeClass('selected');
+    $(s).addClass('selected');
+}
+    </xmp>
+</div>
+Итак, как же работает эта функция? Сначала ищется элемент, который имеет класс selected, и этот класс у него убирается.
+Затем (вторая строка) выделенному элементу (он находится по id, переданному в функцию в качестве параметра s) добавляется класс
+selected. Вот так все просто. <br><br>
+
+
+
+
+
+</div>
+
+</div>
+
+     
+            </div>
+
+            </div>
+
+
+
+
+ </body>
+

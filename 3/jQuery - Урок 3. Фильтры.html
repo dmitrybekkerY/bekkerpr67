@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>jQuery - Урок 3. Фильтры</title>
+<meta http-equiv="KEYWORDS" content="jQuery фильтры">
+<meta http-equiv="DESCRIPTION" content="В этом уроке по jQuery перечисленны фильтры селекторов.">
+
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/media.css"  media="screen"/>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="0f89d7d9c63fbbf3475ef03b1f24f084" content="">
+        <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+        <script type="text/javascript" src="./js/jquery-ui-1.7.2.custom.min.js"></script>
+
+        <script type="text/javascript" src="./js/script.js"></script>
+        
+
+
+
+
+</head>
+
+    <body>
+       <div id="main">       
+        <div id="container">        
+         
+       
+<div id="content">
+
+<div id="data"></div>
+<div id="content_text">
+<br />
+
+<br />
+﻿</div>
+<br />
+
+<div id="content_text_2" >
+<div id="navmenu-context">
+
+</div>
+
+
+
+<h1>jQuery - Урок 3. Фильтры</h1>
+<ul>
+  <li><i class="teg">:first</i> - выбирает первый элемент соответствующего селектора.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("tr:first").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом первую строку таблицы.</li><br><br>
+
+<li><i class="teg">:last</i> - выбирает последний элемент соответствующего селектора.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("tr:last").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом последнюю строку таблицы.</li><br><br>
+
+<li><i class="teg">:even</i> - выбирает четные элементы, начиная с нуля.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("tr:even").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом все четные строки таблицы (т.к. нумерация идет с нуля, то зрительно кажется,
+что нечетные строки).</li><br><br>
+<li><i class="teg">:odd</i> - выбирает нечетные элементы, начиная с нуля.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("tr:odd").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом все нечетные строки таблицы (т.к. нумерация идет с нуля, то зрительно кажется,
+что четные строки).</li><br><br>
+<li><i class="teg">:eq(index)</i> - выбирает элемент по его индексу (начиная с нуля).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:eq(2)").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом текст второй ячейки таблицы (т.к. нумерация идет с нуля, то зрительно кажется,
+что третьей ячейки).</li><br><br>
+<li><i class="teg">:gt(index)</i> - выбирает элементы с индексом больше указанного.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:gt(2)").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом текст во всех ячейках таблицы, начиная со второй (т.к. нумерация идет с нуля, то зрительно кажется,
+что с третьей ячейки).</li><br><br>
+
+<li><i class="teg">:lt(index)</i> - выбирает элементы с индексом меньше указанного.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:lt(4)").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция напишет курсивом текст в первых пяти ячейках таблицы.</li><br><br>
+</ul>
+Как всегда, рассмотрим на примере. Давайте сделаем таблицу, у которой при желании можно будет поменять цвет строк:
+четные строки будут серыми, а нечетные - синими, а цвет шрифта ячеек, начиная с 5 будет желтым. Напоминаю, что нумерация
+идет с нуля, поэтому внешне четные и нечетные строки меняются местами, а 5 ячейка зрительно выглядит, как шестая.
+Этот нюанс нужно запомнить!
+<div class="resalt">
+    <h2>Фильтры jQuery</h2>
+    <table border="1" width="300">
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+    </table><br>
+    <input type="button" value="Поменять цвет" onclick="addColor3();">
+</div>
+Итак, html-код:
+<div class="kod">
+    <xmp>
+<html>
+  <head>
+    <title>jQuery</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="jquery-1.2.6.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <h2>Фильтры jQuery</h2>
+    <table border="1" width="300">
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+        <tr><td>jQuery</td><td>четная строка</td></tr>
+        <tr><td>jQuery</td><td>нечетная строка</td></tr>
+    </table><br>
+    <input type="button" value="Поменять цвет" onclick="addColor3();">
+  </body>
+</html>
+    </xmp>
+</div>
+Код самой функции:
+<div class="kod">
+    <xmp>
+function addColor3(){
+  $("tr:even").css("background-color", "grey");
+  $("tr:odd").css("background-color", "blue");
+  $("td:gt(5)").css("color", "yellow");
+}
+    </xmp>
+</div>
+Продолжим изучение фильтров.<br><br>
+
+<em>Фильтры контента</em><br><br>
+<ul>
+  <li><i class="teg">:header</i> - выбирает все элементы, которые являются заголовками (h1, h2...).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$(":header").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает все заголовки красными.</li><br><br>
+
+<li><i class="teg">:contains (text)</i> - выбирает элементы, которые содержат переданный текст (text).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:contains('New')").css("text-decoration", "underline");
+    </xmp>
+</div>
+Данная инструкция подчеркнет все элементы div-а, содержащие подстроку New.</li><br><br>
+
+<li><i class="teg">:empty</i> - выбирает все элементы, которые не содержат потомков (т.е. являются пустыми).<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:empty").text("Пусто");
+    </xmp>
+</div>
+Данная инструкция найдет все пустые ячейки таблицы и вставит в них текст "Пусто".</li><br><br>
+
+<li><i class="teg">:has(selector)</i> - выбирает элементы, которые  содержат хотя бы один элемент, указанный в селекторе.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:has(p)").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция найдет те div-ы, в которых есть хотя бы один параграф (p) и сделает текст в них курсивом.</li><br><br>
+
+<li><i class="teg">:parent</i> - выбирает родительские элементы, т.е. те, у которых есть потомки.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("td:parent").css("font-style", "italic");
+    </xmp>
+</div>
+Данная инструкция найдет все ячейки таблицы, в которых есть текст или еще что-либо, и сделает их шрифт курсивом.</li><br><br>
+
+<li><i class="teg">:animated</i> - выбирает элементы, которые в данный момент являются анимированными.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:animated").css("border", "1px solid red");
+    </xmp>
+</div>
+Данная инструкция найдет анимированные div-ы и обведет их рамкой.</li>
+</ul><br><br>
+
+<em>Фильтры видимости</em><br><br>
+<ul>
+<li><i class="teg">:hidden</i> - выбирает все скрытые элементы и элементы input, имеющие тип "hidden".<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:hidden").show();
+    </xmp>
+</div>
+Данная инструкция покажет все скрытые div-ы.</li><br><br>
+
+<li><i class="teg">:visible</i> - выбирает все видимые элементы.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div:visible").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста в видимых div-ах красным.</li><br><br>
+</ul>
+
+<em>Фильтры атрибутов</em><br><br>
+<ul>
+   <li><i class="teg">[attribute]</i> - выбирает все элементы с указанным атрибутом.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div[id]").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным во всех div-ах, у которых есть идентификатор (id).</li><br><br>
+
+<li><i class="teg">[attribute=value]</i> - выбирает элементы с  атрибутом, значение которого соответствует указанному.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name='Main']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у input-а с именем "Main".</li><br><br>
+
+<li><i class="teg">[attribute!=value]</i> - выбирает элементы с  атрибутом, значение которого не соответствует указанному.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name!='Main']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у всех input-ов, кроме input-а с именем "Main".</li><br><br>
+
+<li><i class="teg">[attribute^=value]</i> - выбирает все элементы, соответствующий атрибут которых начинается с указанного значения.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name^='news']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у тех input-ов, атрибуты name которых начинаются с news.</li><br><br>
+
+<li><i class="teg">[attribute$=value]</i> - выбирает все элементы, соответствующий атрибут которых заканчивается указанным значением.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name$='news']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у тех input-ов, атрибуты name которых заканчивается на  news.</li><br><br>
+
+<li><i class="teg">[attribute*=value]</i> - выбирает все элементы, соответствующий атрибут которых содержит в качестве подстроки
+указанное значение.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[name*='news']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у тех input-ов, атрибуты name которых содержат подустроку 'news',
+неважно вначале, в конце или середине.</li><br><br>
+
+<li><i class="teg">[selector1]...[selectorN]</i> - выбирает все элементы, которые имеют указанные атрибуты и соответствующие
+значения.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input[id][name*='news']").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным у тех input-ов, у которых есть идентификатор и атрибуты name которых содержат
+подустроку 'news'.</li><br><br>
+</ul>
+
+<em>Фильтры форм</em><br><br>
+<ul>
+    <li><i class="teg">:enabled / :disabled</i> - выбирает все элементы, имеющие активное (enabled) / запрещенное (disabled)
+    состояние.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input:enabled").css("color", "red");
+    </xmp>
+</div>
+Данная инструкция сделает цвет текста  красным только у активных input-ов.</li><br><br>
+
+ <li><i class="teg">:checked</i> - выбирает все элементы, которые отмечены.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("input:checked").lenght;
+    </xmp>
+</div>
+Данная инструкция сосчитает все отмеченные input-ы.</li><br><br>
+
+<li><i class="teg">:selected</i> - выбирает все выбранные элементы.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("select option:selected").lenght;
+    </xmp>
+</div>
+Данная инструкция сосчитает сколько выбрано элементов в списке.</li><br><br>
+</ul>
+
+<em>Фильтры потомков</em><br><br>
+<ul>
+    <li><i class="teg">:first-child</i> - выбирает  элементы, которые являются первыми потомками своих родителей.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div span:first-child").css("border", "1px solid blue");
+    </xmp>
+</div>
+Данная инструкция обведет рамкой  первый span в каждом div-е.</li><br><br>
+
+<li><i class="teg">:last-child</i> - выбирает  элементы, которые являются последними потомками своих родителей.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div span:last-child").css("border", "1px solid blue");
+    </xmp>
+</div>
+Данная инструкция обведет рамкой  последний span в каждом div-е.</li><br><br>
+
+<li><i class="teg">:only-child</i> - выбирает  элементы, которые являются единственными потомками своих родителей.<br>
+    Пример:
+    <div class="kod">
+    <xmp>
+$("div button:only-child").css("border", "1px solid blue");
+    </xmp>
+</div>
+Данная инструкция обведет рамкой  те div-ы, которые имеют кнопку и при том только одну.</li><br><br>
+</ul>
+Вот мы и рассмотрели селекторы и фильтры jQuery, запоминать их необязательно, всегда можно вернуться в этот урок и воспользоваться
+им, как справочником. В следующий раз мы узнаем, как jQuery умеет работать со стилями CSS, а заодно и попрактикуемся
+задавать селекторы и фильтры.
+<br><br>
+
+<br><br>
+
+</div>
+
+</div>
+
+</div>
+      
+            </div>
+
+            </div>
+
+
+ </body>
+
